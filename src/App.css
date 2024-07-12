@@ -1,38 +1,88 @@
+body {
+  margin: 0;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  scrollbar-width: none;
   color: white;
+  background: url("../public/images/bg.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+body, html, #root {
+  height: 100%;
+  overflow: hidden; /* Скрыть скроллбар для всего документа */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Скрыть скроллбар для всех контейнеров */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar,
+#root::-webkit-scrollbar,
+.app::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Для Firefox */
+body,
+html,
+#root,
+.app,
+.sidebar,
+.main-content {
+  scrollbar-width: none; /* Скрыть скроллбар для всех контейнеров */
+}
+
+/* .app {
+  display: flex;
+  height: 100%;
+  overflow: hidden; /* Скрыть скроллбар для основного контейнера */
+
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  height: 100vh; /* Высота на всю видимую часть окна */
+  overflow-y: auto; /* Обеспечить прокрутку для контента в сайдбаре */
+  backdrop-filter: blur(50px); /* Apply blur effect */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto; /* Обеспечить прокрутку для основного контента */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+.sidebar li {
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: aliceblue;
+  transition: all .3s ease-in-out;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+  color: rgb(210, 212, 214);
 }
