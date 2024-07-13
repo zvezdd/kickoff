@@ -1,43 +1,27 @@
 // src/components/Login.js
-import React, { useState } from "react";
-import signIn from "../config/auth-signin";
+import React from "react";
+import { auth, provider } from "../config/firebase-config";
+import { signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await signIn(email, password);
-      // Handle successful login (e.g., redirect to a dashboard)
-    } catch (error) {
-      setError(error.message);
-    }
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider);
+    navigate("/");
   };
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="name"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-      {error && <p>{error}</p>}
+      <h1>Sign in with google to continue</h1>
+      <button
+        type="button"
+        className="login-with-google-btn"
+        onClick={signInWithGoogle}
+      >
+        Sign in with Google
+      </button>
     </div>
   );
 };
