@@ -1,0 +1,75 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.option {
+  color: black;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.textarea {
+  min-height: 200px;
+  resize: none;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 14px;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #6200ea;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submitButton:hover {
+  background: #3700b3;
+}

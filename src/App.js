@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
-import CreatePost from "./pages/CreatePost";
+import CreatePost from "./pages/create-post/CreatePost";
 import Profile from "./pages/Profile";
 
 function App() {
