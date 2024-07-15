@@ -1,0 +1,42 @@
+/* src/components/Post.module.css */
+
+.post {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .postTitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .postDescription {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .postSchool, .postContacts {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .postFooter {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  .postAuthor {
+    font-weight: bold;
+  }
+  
+  .postDate {
+    font-style: italic;
+  }
+  

@@ -1,0 +1,10 @@
+/* src/pages/Home.module.css */
+
+.home {
+  padding: 20px;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+}

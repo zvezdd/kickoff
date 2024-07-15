@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { schools } from "../data/schools"; 
+import { schools } from "../../data/schools"; 
 import styles from "./CreateForm.module.css"; 
 
 const schema = yup.object().shape({
