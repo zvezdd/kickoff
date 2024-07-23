@@ -1,3 +1,217 @@
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/add-r.css');
+.icon-text {
+  display: inline-flex;
+  align-items: center;
+}
+
+.gg-log-in {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 6px;
+  height: 16px;
+  border: 2px solid;
+  border-left: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-right: 20px;
+  margin-left: 8px;
+ }
+ 
+ .gg-log-in::after,
+ .gg-log-in::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute
+ }
+ 
+ .gg-log-in::after {
+  border-top: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  width: 8px;
+  height: 8px;
+  left: -8px;
+  bottom: 2px
+ }
+ 
+ .gg-log-in::before {
+  border-radius: 3px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  left: -11px;
+  bottom: 5px
+ } 
+
+.gg-log-out {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 6px;
+  height: 16px;
+  border: 2px solid;
+  transform: scale(var(--ggs,1));
+  border-right: 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  margin-right: 20px;
+ }
+ 
+ .gg-log-out::after,
+ .gg-log-out::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute
+ }
+ 
+ .gg-log-out::after {
+  border-top: 2px solid;
+  border-left: 2px solid;
+  transform: rotate(-45deg);
+  width: 8px;
+  height: 8px;
+  left: 4px;
+  bottom: 2px
+ }
+ 
+ .gg-log-out::before {
+  border-radius: 3px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  left: 5px;
+  bottom: 5px
+ } 
+
+
+.gg-profile,
+.gg-profile::after,
+.gg-profile::before {
+ display: block;
+ box-sizing: border-box;
+ border: 2px solid;
+ border-radius: 100px
+}
+
+.gg-profile {
+ overflow: hidden;
+ transform: scale(var(--ggs,1));
+ width: 22px;
+ height: 22px;
+ position: relative;
+ margin-right: 8px;
+}
+
+.gg-profile::after,
+.gg-profile::before {
+ content: "";
+ position: absolute;
+ top: 2px;
+ left: 5px;
+ width: 8px;
+ height: 8px
+}
+
+.gg-profile::after {
+ border-radius: 200px;
+ top: 11px;
+ left: 0px;
+ width: 18px;
+ height: 18px
+} 
+
+
+.gg-home {
+  background:
+      linear-gradient(to left,
+          currentColor 5px,transparent 0)
+          no-repeat 0 bottom/4px 2px,
+      linear-gradient(to left,
+          currentColor 5px,transparent 0)
+          no-repeat right bottom/4px 2px;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 18px;
+  height: 14px;
+  border: 2px solid;
+  border-top: 0;
+  border-bottom: 0;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-bottom: -2px;
+  margin-right: 10px;
+}
+.gg-home::after,
+.gg-home::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute
+}
+.gg-home::before {
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-top-left-radius: 4px;
+  transform: rotate(45deg);
+  top: -5px;
+  border-radius: 3px;
+  width: 14px;
+  height: 14px;
+  left: 0
+}
+.gg-home::after {
+  width: 8px;
+  height: 10px;
+  border: 2px solid;
+  border-radius: 100px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+  left: 3px;
+  bottom: 0
+}
+
+.gg-add-r {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  transform: scale(var(--ggs,1));
+  border-radius: 4px;
+  margin-right: 8px; 
+}
+
+.gg-add-r::after,
+.gg-add-r::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 5px;
+  top: 8px;
+  left: 4px;
+}
+
+.gg-add-r::after {
+  width: 2px;
+  height: 10px;
+  top: 4px;
+  left: 8px;
+}
+
 body {
   margin: 0;
 }
@@ -22,10 +236,9 @@ body {
 
 body, html, #root {
   height: 100%;
-  overflow: hidden; /* Скрыть скроллбар для всего документа */
+  overflow: hidden; 
 }
 
-/* Скрыть скроллбар для всех контейнеров */
 body::-webkit-scrollbar,
 html::-webkit-scrollbar,
 #root::-webkit-scrollbar,
@@ -35,34 +248,37 @@ html::-webkit-scrollbar,
   display: none;
 }
 
-/* Для Firefox */
+
 body,
 html,
 #root,
 .app,
 .sidebar,
 .main-content {
-  scrollbar-width: none; /* Скрыть скроллбар для всех контейнеров */
+  scrollbar-width: none;
+
 }
 
-/* .app {
-  display: flex;
-  height: 100%;
-  overflow: hidden; /* Скрыть скроллбар для основного контейнера */
-
+.log-out-text, .log-in-text {
+  font-size: 16px;
+  color: #000; 
+  margin: 0; 
+  padding: 0; 
+  margin-bottom: 8px;
+}
 
 .sidebar {
   width: 200px;
   padding: 20px;
-  height: 100vh; /* Высота на всю видимую часть окна */
-  overflow-y: auto; /* Обеспечить прокрутку для контента в сайдбаре */
-  backdrop-filter: blur(50px); /* Apply blur effect */
+  height: 100vh; 
+  overflow-y: auto; 
+  backdrop-filter: blur(50px); /* blur effect (for future) */
 }
 
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  overflow-y: auto; /* Обеспечить прокрутку для основного контента */
+  overflow-y: auto; 
 }
 
 .sidebar ul {
@@ -112,12 +328,11 @@ html,
   background-color: #6200ea;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 15px 45px;
+  border-radius: 8px;
+  padding: 10px 30px;
   margin-top: 25px;
   cursor: pointer;
   transition: all 0.5s ease;
-
 }
 
 .profile-button:hover {

@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
     <h1>Find Teams</h1>
-    {loading ? ( // если идет загрузка, показываем индикатор загрузки
+    {loading ? (
       <Loader/>
     ) : (
       <div className={styles.postsList}>

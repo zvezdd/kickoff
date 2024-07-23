@@ -10,19 +10,31 @@ export default function Sidebar() {
     <div className="sidebar">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <div className="icon-text">
+            <i className="gg-home"></i>
+            <Link to="/">Home</Link>{" "}
+          </div>
         </li>
         {!user ? (
           <li>
-            <Link to="/login">Login</Link>
+            <div className="icon-text">
+              <i className="gg-log-in"></i>
+              <Link to="/login">Login</Link>
+            </div>
           </li>
         ) : (
           <li>
-            <Link to="/createpost">Create Post</Link>
+            <div className="icon-text">
+              <i className="gg-add-r"></i>
+              <Link to="/createpost">Create Post</Link>
+            </div>
           </li>
         )}
         <li>
-          <Link to="/profile">Profile</Link>
+          <div className="icon-text">
+            <i className="gg-profile"></i>
+            <Link to="/profile">Profile</Link>
+          </div>
         </li>
       </ul>
     </div>

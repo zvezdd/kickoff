@@ -8,7 +8,7 @@ export default function Profile() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
-  const signUserOut = async() => {
+  const signUserOut = async () => {
     await signOut(auth);
   };
   return (
@@ -17,13 +17,23 @@ export default function Profile() {
         <div className="profile">
           <p>{user?.displayName}</p>
           <img className="profile-picture" src={user?.photoURL || ""} />
-          <button className="profile-button" onClick={signUserOut}>Log out</button>
+          <button className="profile-button" onClick={signUserOut}>
+            <div className="icon-text">
+              <i className="gg-log-out"></i>
+              <p className="log-out-text">Log out</p>
+            </div>
+          </button>
         </div>
       )}
       {!user && (
         <div className="profile">
           <p>Please, Log in to continue</p>
-          <button className="profile-button" onClick={() => navigate("/login")}>Log in</button>
+          <button className="profile-button" onClick={() => navigate("/login")}>
+          <div className="icon-text">
+              <i className="gg-log-in"></i>
+              <p className="log-in-text">Log in</p>
+            </div>
+          </button>
         </div>
       )}
     </div>
