@@ -1,32 +1,39 @@
-import { addDoc, collection, doc, getDoc, setDoc, updateDoc, arrayUnion, getDocs, query, where } from "firebase/firestore"
-import { db, auth } from "./firebase-config"
+import { addDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { db, auth } from "../config/firebase-config";
 
-const createOrGetChat = async (authorId) => {
-    const userId = auth.currentUser.uid
+export const createOrGetChat = async (authorId) => {
+  const userId = auth.currentUser?.uid;
+  if (!userId || !authorId) {
+    console.error("User ID or Author ID is missing:", { userId, authorId });
+    throw new Error("User ID or Author ID is missing");
+  }
 
-    const chatsRef = collection(db, "chats")
-    const q = query(chatsRef, where("participants", "array-contains", userId));
-    const querySnapshot = await getDocs(q)
-    let chatId = null;
-    querySnapshot.forEach((doc) => {
-        if(doc.data().participants.includes(authorId)){
-            chatId = doc.id;
-        }
-    });
+  const chatsRef = collection(db, "chats");
+  const q = query(chatsRef, where("participants", "array-contains", userId));
+  const querySnapshot = await getDocs(q);
+  let chatId = null;
 
-      if(!chatId) {
-        const chatDocRef = await addDoc(collection(db, "chats"), {
-            participants: [userId,, authorId],
-        })
-        chatId = chatDocRef.id
-      }
-      return chatId
-}
+  querySnapshot.forEach((doc) => {
+    if (doc.data().participants.includes(authorId)) {
+      chatId = doc.id;
+    }
+  });
 
-const sendMessage = async (chatId, message) => {
-    await addDoc(collection(db, "chats", chatId, "messages"), {
-      sender: auth.currentUser.uid,
-      text: message,
-      timestamp: new Date(),
-    });
-  };
+  if (!chatId) {
+    const chatData = {
+      participants: [userId, authorId],
+    };
+
+    console.log("Creating a new chat with data:", chatData);
+
+    try {
+      const chatDocRef = await addDoc(collection(db, "chats"), chatData);
+      chatId = chatDocRef.id;
+    } catch (error) {
+      console.error("Error creating chat:", error);
+      throw error;
+    }
+  }
+
+  return chatId;
+};
