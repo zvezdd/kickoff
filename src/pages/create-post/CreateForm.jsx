@@ -1,13 +1,13 @@
 import React from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { auth, db } from "../../config/firebase-config"
-import {useAuthState} from "react-firebase-hooks/auth"
+import { auth, db } from "../../config/firebase-config";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { schools } from "../../data/schools"; 
-import styles from "./CreateForm.module.css"; 
+import { schools } from "../../data/schools";
+import styles from "./CreateForm.module.css";
 
 const schema = yup.object().shape({
   title: yup.string().required("You must add a title"),
@@ -17,7 +17,6 @@ const schema = yup.object().shape({
 });
 
 export default function CreateForm() {
-
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -29,15 +28,28 @@ export default function CreateForm() {
     resolver: yupResolver(schema),
   });
 
-  const postsRef = collection(db, "posts")
+  const postsRef = collection(db, "posts");
 
-  const onCreatePost = async(data) => {
-    await addDoc(postsRef, {
-      ...data,
-      username: user?.displayName,
-      userId: user?.uid,
-    })
-    navigate("/")
+  const onCreatePost = async (data) => {
+    try {
+      if (!user) {
+        throw new Error("User is not authenticated");
+      }
+
+      const postData = {
+        ...data,
+        username: user.displayName,
+        userId: user.uid,
+      };
+
+      console.log("Post Data: ", postData);
+
+      await addDoc(postsRef, postData);
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating post: ", error);
+      alert("Error creating post: " + error.message);
+    }
   };
 
   return (
@@ -73,7 +85,7 @@ export default function CreateForm() {
       <div className={styles.inputGroup}>
         <input
           type="text"
-          placeholder="your phone number..."
+          placeholder="Your phone number..."
           {...register("contacts")}
           className={styles.input}
         />

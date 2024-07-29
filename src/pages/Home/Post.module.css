@@ -1,42 +1,112 @@
 /* src/components/Post.module.css */
 
 .post {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.postTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.postDescription {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.postSchool, .postContacts {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.postAuthor {
+  font-weight: bold;
+}
+
+.postDate {
+  font-style: italic;
+}
+
+@media (min-width: 1200px) {
+  /* Стили для экранов от 1200 пикселей и больше */
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+  /* Стили для экранов от 993 до 1199 пикселей */
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  /* Стили для экранов от 769 до 992 пикселей */
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .post {
+    max-height: 500px;
+    padding: 30px;
+    border-radius: 20px;
   }
-  
+
   .postTitle {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 40px;
+    margin-bottom: 15px;
   }
-  
+
   .postDescription {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 26px;
+    margin-bottom: 15px;
   }
-  
+
   .postSchool, .postContacts {
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 15px;
   }
-  
-  .postFooter {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: #bbb;
-  }
-  
+
   .postAuthor {
-    font-weight: bold;
+    font-size: 25px;
   }
-  
-  .postDate {
-    font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .postDescription {
+    font-size: 20px;
+    margin-bottom: 15px;
   }
-  
+
+  .post {
+    max-height: 500px;
+    padding: 30px;
+    border-radius: 20px;
+  }
+
+  .postTitle {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+
+  .postDescription {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+
+  .postSchool, .postContacts {
+    font-size: 34px;
+    margin-bottom: 15px;
+  }
+
+  .postAuthor {
+    font-size: 70px;
+  }
+}

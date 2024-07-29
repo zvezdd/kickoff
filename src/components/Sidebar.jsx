@@ -8,6 +8,7 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
+      <h1>Projet</h1>
       <ul>
         <li>
           <div className="icon-text">
