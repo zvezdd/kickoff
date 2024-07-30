@@ -92,7 +92,7 @@ export default function CreateForm() {
         <p className={styles.error}>{errors.contacts?.message}</p>
       </div>
       <button type="submit" className={styles.submitButton}>
-        Submit
+        Accept
       </button>
     </form>
   );
