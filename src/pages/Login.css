@@ -1,0 +1,30 @@
+/* src/components/Login.css */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.h1-login {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(45deg, #ffffff 0%, #6200ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.login-with-google-btn {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.login-with-google-btn:hover {
+  background-color: #3700b3;
+}
