@@ -1,7 +1,20 @@
 import React from 'react';
 import styles from './Post.module.css';
 
-export default function Post({ post }) {
+interface PostData {
+  id: string;
+  title: string;
+  description: string;
+  school: string;
+  contacts: number;
+  username: string;
+}
+
+interface Props {
+  post: PostData;
+}
+
+const Post: React.FC<Props> = ({ post }) => {
   return (
     <div className={styles.post}>
       <h2 className={styles.postTitle}>{post.title}</h2>
@@ -13,5 +26,6 @@ export default function Post({ post }) {
       </div>
     </div>
   );
-}
+};
 
+export default Post;

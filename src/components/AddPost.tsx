@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addPost } from './postsSlice';
 
 const AddPost = () => {
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState<string>('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

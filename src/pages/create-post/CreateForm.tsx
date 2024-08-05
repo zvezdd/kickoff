@@ -2,12 +2,19 @@ import React from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { auth, db } from "../../config/firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { schools } from "../../data/schools";
 import styles from "./CreateForm.module.css";
+
+interface FormData {
+  title: string;
+  description: string;
+  school: string;
+  contacts: number;
+}
 
 const schema = yup.object().shape({
   title: yup.string().required("You must add a title"),
@@ -24,13 +31,13 @@ export default function CreateForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
   const postsRef = collection(db, "posts");
 
-  const onCreatePost = async (data) => {
+  const onCreatePost: SubmitHandler<FormData> = async (data) => {
     try {
       if (!user) {
         throw new Error("User is not authenticated");
@@ -47,8 +54,13 @@ export default function CreateForm() {
       await addDoc(postsRef, postData);
       navigate("/");
     } catch (error) {
-      console.error("Error creating post: ", error);
-      alert("Error creating post: " + error.message);
+      if (error instanceof Error) {
+        console.error("Error creating post: ", error);
+        alert("Error creating post: " + error.message);
+      } else {
+        console.error("Unexpected error: ", error);
+        alert("An unexpected error occurred");
+      }
     }
   };
 
@@ -65,7 +77,6 @@ export default function CreateForm() {
       </div>
       <div className={styles.inputGroup}>
         <textarea
-          type="text"
           placeholder="Description..."
           {...register("description")}
           className={styles.textarea}

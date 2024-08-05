@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../config/firebase-config";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -6,8 +6,18 @@ import Post from "./Post";
 import styles from "./Home.module.css";
 import Loader from "../../components/Loader";
 
+
+interface PostData {
+  id: string;
+  title: string;
+  description: string;
+  school: string;
+  contacts: number;
+  username: string;
+}
+
 export default function Home() {
-  const [postsList, setPostsList] = useState([]);
+  const [postsList, setPostsList] = useState<PostData[]>([]);
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
 
@@ -16,7 +26,7 @@ export default function Home() {
       setLoading(true);
       try {
         const data = await getDocs(collection(db, "posts"));
-        setPostsList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setPostsList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id } as PostData)));
       } catch (error) {
         console.error("Error getting documents: ", error);
       } finally {
