@@ -9,12 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { schools } from "../../data/schools";
 import styles from "./CreateForm.module.css";
 
-interface FormData {
-  title: string;
-  description: string;
-  school: string;
-  contacts: number;
-}
+
 
 const schema = yup.object().shape({
   title: yup.string().required("You must add a title"),
@@ -37,7 +32,7 @@ export default function CreateForm() {
 
   const postsRef = collection(db, "posts");
 
-  const onCreatePost: SubmitHandler<FormData> = async (data) => {
+  const onCreatePost = async (data) => {
     try {
       if (!user) {
         throw new Error("User is not authenticated");

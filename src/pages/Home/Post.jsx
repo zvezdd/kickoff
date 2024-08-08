@@ -1,20 +1,9 @@
 import React from 'react';
 import styles from './Post.module.css';
 
-interface PostData {
-  id: string;
-  title: string;
-  description: string;
-  school: string;
-  contacts: number;
-  username: string;
-}
 
-interface Props {
-  post: PostData;
-}
 
-const Post: React.FC<Props> = ({ post }) => {
+const Post= ({ post }) => {
   return (
     <div className={styles.post}>
       <h2 className={styles.postTitle}>{post.title}</h2>

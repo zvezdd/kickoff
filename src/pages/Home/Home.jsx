@@ -7,17 +7,10 @@ import styles from "./Home.module.css";
 import Loader from "../../components/Loader";
 
 
-interface PostData {
-  id: string;
-  title: string;
-  description: string;
-  school: string;
-  contacts: number;
-  username: string;
-}
+
 
 export default function Home() {
-  const [postsList, setPostsList] = useState<PostData[]>([]);
+  const [postsList, setPostsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
 
@@ -26,7 +19,7 @@ export default function Home() {
       setLoading(true);
       try {
         const data = await getDocs(collection(db, "posts"));
-        setPostsList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id } as PostData)));
+        setPostsList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       } catch (error) {
         console.error("Error getting documents: ", error);
       } finally {
