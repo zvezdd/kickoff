@@ -15,14 +15,18 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Sidebar />
+        {user && <Sidebar />}
         <div className="main-content">
           <Routes>
-            { !user ? (
-            <Route path="/login" element={<Login />} /> ) :
-           ( <> <Route path="/" element={<Home />} />
-            <Route path="/createpost" element={<CreatePost />} />
-            <Route path="/profile" element={<Profile />} /> </> )}
+            {!user ? (
+              <Route path="/login" element={<Login />} />
+            ) : (
+              <>
+                <Route path="/" element={<Home />} />
+                <Route path="/createpost" element={<CreatePost />} />
+                <Route path="/profile" element={<Profile />} />
+              </>
+            )}
           </Routes>
         </div>
       </div>
@@ -31,3 +35,4 @@ const App = () => {
 };
 
 export default App;
+
