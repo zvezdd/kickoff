@@ -1,4 +1,4 @@
-export const schools = [
+export const schools: string[] = [
   "NIS IB Astana",
   "NIS PhMD Astana",
   "NIS Phmd Almaty",

@@ -10,7 +10,10 @@ export default function Profile() {
 
   const signUserOut = async () => {
     await signOut(auth);
+    navigate("/login")
   };
+
+
   return (
     <div>
       {user && (

@@ -1,12 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
-// ...
+import { configureStore } from '@reduxjs/toolkit';
+import postFilterReducer from './slices/postFilterSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    
+    postFilter: postFilterReducer,
   },
-})
+});
 
+export type RootState = ReturnType<typeof store.getState>;
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export default store;
