@@ -20,7 +20,13 @@ const schema = yup.object().shape({
   title: yup.string().required("You must add a title"),
   description: yup.string().required("You must add a description"),
   school: yup.string().required("You must select a school"),
-  contacts: yup.number().required("You must add your number")
+  contacts: yup
+    .number()
+    .typeError("You must enter a valid number")
+    .required("You must add your number")
+    .transform((value, originalValue) => {
+      return originalValue === "" ? undefined : value;
+    }),
 });
 
 export default function CreateForm() {
