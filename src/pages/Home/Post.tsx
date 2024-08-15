@@ -16,7 +16,7 @@ interface Props {
 
 const Post: React.FC<Props> = ({ post }) => {
   return (
-    <div className={styles.post}>
+    <div  className={styles.post}>
       <h2 className={styles.postTitle}>{post.title}</h2>
       <p className={styles.postDescription}>{post.description}</p>
       <p className={styles.postSchool}><strong>School: </strong>{post.school}</p>

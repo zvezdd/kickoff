@@ -7,14 +7,14 @@ import { setSchoolFilter } from "../../redux/slices/postFilterSlice";
 import Post from "./Post";
 import styles from "./Home.module.css";
 import Loader from "../../components/Loader";
-import { schools } from '../../data/schools';  // Import the schools list
+import { schools } from "../../data/schools"; // Import the schools list
 import { RootState } from "../../redux/store"; // Import RootState
 
 interface PostData {
   id: string;
   title: string;
   description: string;
-  contacts: number
+  contacts: number;
   school: string;
   username: string;
 }
@@ -31,7 +31,9 @@ export default function Home() {
       setLoading(true);
       try {
         const data = await getDocs(collection(db, "posts"));
-        const posts = data.docs.map((doc) => ({ ...doc.data(), id: doc.id } as PostData));
+        const posts = data.docs.map(
+          (doc) => ({ ...doc.data(), id: doc.id } as PostData)
+        );
         setPostsList(posts);
       } catch (error) {
         console.error("Error getting documents: ", error);
@@ -54,6 +56,8 @@ export default function Home() {
   const filteredPosts = postsList.filter((post) => {
     return filters.school ? post.school === filters.school : true;
   });
+
+  const popUp = () => {};
 
   return (
     <div className={styles.home}>
@@ -85,9 +89,7 @@ export default function Home() {
           {filteredPosts.length === 0 ? (
             <p className={styles.noPostsMessage}>No posts available</p>
           ) : (
-            filteredPosts.map((post) => (
-              <Post key={post.id} post={post} />
-            ))
+            filteredPosts.map((post) => <Post key={post.id} post={post} />)
           )}
         </div>
       )}
